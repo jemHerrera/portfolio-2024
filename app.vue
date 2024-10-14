@@ -6,19 +6,11 @@ import type { TechProps } from "./components/Tech.vue";
 import type { ExperienceProps } from "./components/Experience.vue";
 import type { ProjectsProps } from "./components/Projects.vue";
 
+import { useIntersectionObserver } from "@vueuse/core";
+
 useHead({
   title: "Jem | Dev",
 });
-
-const nav = ref<SimpleNavProps>({
-  links: ["#intro", "#tech", "#xp", "#hobby"],
-  current: 0,
-});
-
-const profilePicture: Image = {
-  src: "pixelpfp.jpg",
-  alt: "Portrait of Jem, in a few pixels.",
-};
 
 const social: Button[] = [
   {
@@ -160,6 +152,30 @@ const projects: ProjectsProps = {
     },
   ],
 };
+
+const profilePicture: Image = {
+  src: "pixelpfp.jpg",
+  alt: "Portrait of Jem, in a few pixels.",
+};
+
+const nav = ref<SimpleNavProps>({
+  links: ["#intro", "#tech", "#xp", "#hobby"],
+  current: 0,
+});
+
+const sectionRefs = [ref(null), ref(null), ref(null), ref(null)];
+
+sectionRefs.forEach((sectionRef, index) => {
+  useIntersectionObserver(
+    sectionRef,
+    ([{ isIntersecting }]) => {
+      if (isIntersecting) {
+        nav.value.current = index;
+      }
+    },
+    { threshold: 0.5 }
+  );
+});
 </script>
 
 <template>
@@ -177,7 +193,12 @@ const projects: ProjectsProps = {
       :links="social"
     />
     <main class="px-6 pt-20 pb-40 md:mx-[calc(100vw/6)] lg:mx-[calc(100vw/4)]">
-      <Hero id="intro" :img="profilePicture" :links="social">
+      <Hero
+        id="intro"
+        :ref="sectionRefs[0]"
+        :img="profilePicture"
+        :links="social"
+      >
         <h1 class="font-bold text-7xl mb-6">
           Hi! I'm
           <span class="text-turqoise-400">Jem</span>
@@ -186,9 +207,19 @@ const projects: ProjectsProps = {
         <p class="leading-6 text-white mb-6">{{ intro[0] }}</p>
         <p class="leading-6 text-grey-300">{{ intro[1] }}</p>
       </Hero>
-      <Tech id="tech" v-bind="tech" class="mb-20" />
-      <Experience id="xp" v-bind="experience" class="mb-20" />
-      <Projects id="hobby" v-bind="projects" />
+      <Tech id="tech" :ref="sectionRefs[1]" v-bind="tech" class="pt-20" />
+      <Experience
+        id="xp"
+        :ref="sectionRefs[2]"
+        v-bind="experience"
+        class="pt-20"
+      />
+      <Projects
+        id="hobby"
+        :ref="sectionRefs[3]"
+        v-bind="projects"
+        class="pt-20"
+      />
     </main>
   </div>
 </template>
