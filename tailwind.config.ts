@@ -12,7 +12,7 @@ export default <Partial<Config>>{
         red: "#f50e43",
         teal: "#00ffee",
         purple: "#2200fd",
-        gray: {
+        grey: {
           50: "#0C0B13",
           100: "#11101A",
           200: "#292734",
@@ -21,6 +21,11 @@ export default <Partial<Config>>{
           500: "#b7b5c4",
           600: "#ffffff",
         },
+      },
+      css: ["~/assets/main.css"],
+      fontFamily: {
+        montserrat: ["Montserrat", "Arial", "sans-serif"],
+        "roboto-mono": ["Roboto Mono", "Arial", "serif"],
       },
     },
   },
