@@ -3,7 +3,4 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui"],
   css: ["~/assets/main.css"],
-  app: {
-    baseURL: "/portfolio-2024/",
-  },
 });
