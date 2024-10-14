@@ -3,4 +3,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui"],
   css: ["~/assets/main.css"],
+  router: {
+    base: "/portfolio-2024/",
+  },
+  target: "static",
 });
