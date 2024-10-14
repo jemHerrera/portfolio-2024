@@ -6,4 +6,13 @@ export default defineNuxtConfig({
   app: {
     baseURL: "/portfolio-2024/",
   },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          assetFileNames: "[name][extname]",
+        },
+      },
+    },
+  },
 });
