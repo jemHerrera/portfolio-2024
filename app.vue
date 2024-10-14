@@ -10,6 +10,7 @@ import { useIntersectionObserver } from "@vueuse/core";
 
 useHead({
   title: "Jem | Dev",
+  link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
 });
 
 const social: Button[] = [
@@ -105,7 +106,7 @@ const projects: ProjectsProps = {
       description:
         "Scriddish is a mobile web application for meal planning. The app allows user to select from a variety of recipes and save them.",
       image: {
-        src: "/scriddish/scriddish.png",
+        src: "/scriddish.png",
         alt: "Scriddish Logo",
       },
       tags: [".vue", ".scss"],
@@ -130,7 +131,7 @@ const projects: ProjectsProps = {
       description:
         "A game of Blackjack in the browser. Powered by VueJs and DeckofCards API.",
       image: {
-        src: "/blackjack/chip-vue.png",
+        src: "/chip-vue.png",
         alt: "Vue chip logo",
       },
       tags: [".vue", ".scss"],
