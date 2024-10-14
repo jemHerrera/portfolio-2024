@@ -10,17 +10,11 @@ export type HeroProps = {
 defineProps<HeroProps>();
 </script>
 <template>
-  <div>
-    <img class="h-32 w-32 rounded-full mb-4" v-bind="img" />
+  <div class="h-screen flex flex-col justify-end pb-[calc(100vh/4)]">
+    <img class="h-32 w-32 rounded-full mb-8" v-bind="img" />
     <slot />
-    <div class="flex gap-2">
-      <UButton
-        v-for="link in links"
-        v-bind="link"
-        size="lg"
-        color="grey"
-        variant="ghost"
-      />
+    <div class="flex gap-2 mt-6">
+      <UButton v-for="link in links" v-bind="link" size="xl" variant="ghost" />
     </div>
   </div>
 </template>

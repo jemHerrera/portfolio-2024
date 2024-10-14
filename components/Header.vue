@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { Image } from "~/types/Image";
 import type { SimpleNavProps } from "./SimpleNav.vue";
+import type { Button } from "#ui/types";
 
 export type HeaderProps = {
   img?: Image;
   nav?: SimpleNavProps;
-  links: { icon: string; href: string }[];
+  links: Button[];
 };
 
 defineProps<HeaderProps>();
@@ -30,7 +31,7 @@ defineProps<HeaderProps>();
       <UButton
         v-for="link in links"
         v-bind="link"
-        size="lg"
+        size="xl"
         color="grey"
         variant="ghost"
       />

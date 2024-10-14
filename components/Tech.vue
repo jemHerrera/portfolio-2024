@@ -8,13 +8,16 @@ defineProps<TechProps>();
 </script>
 
 <template>
-  <h2>{{ title }}</h2>
-  <p clas="inline-flex flex-wrap">
-    <span
-      class="[&:not(:last-child)]:after:content-[',\00a0']"
-      v-for="item in list"
+  <div class="flex flex-col gap-6">
+    <h2
+      class="inline pr-6 font-bold text-4xl border-purple-700 border-b-4 self-start"
     >
-      {{ item }}
-    </span>
-  </p>
+      {{ title }}<span class="text-ribbon-600">.</span>
+    </h2>
+    <div class="inline-flex flex-wrap text-grey-300 gap-4">
+      <UBadge size="lg" color="purple" variant="soft" v-for="item in list">
+        {{ item }}
+      </UBadge>
+    </div>
+  </div>
 </template>

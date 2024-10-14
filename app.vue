@@ -10,33 +10,36 @@ useHead({
   title: "Jem | Dev",
 });
 
-const nav: SimpleNavProps = {
-  links: ["test", "test", "test"],
-  current: 2,
-};
+const nav = ref<SimpleNavProps>({
+  links: ["#intro", "#tech", "#xp", "#hobby"],
+  current: 0,
+});
 
 const profilePicture: Image = {
   src: "pixelpfp.jpg",
   alt: "Portrait of Jem, in a few pixels.",
 };
 
-const social: { icon: string; href: string }[] = [
+const social: Button[] = [
   {
     icon: "pixelarticons:github",
-    href: "https://github.com/jemHerrera",
+    to: "https://github.com/jemHerrera",
+    target: "_blank",
   },
   {
     icon: "mdi:linkedin",
-    href: "https://www.linkedin.com/in/jemherrera/",
+    to: "https://www.linkedin.com/in/jemherrera/",
+    target: "_blank",
   },
   {
     icon: "line-md:instagram",
-    href: "https://www.instagram.com/sinchemy_art/",
+    to: "https://www.instagram.com/sinchemy_art/",
+    target: "_blank",
   },
 ];
 
 const intro: string[] = [
-  "I'm a Software Developer from Canada. I build websites, web applications and API services.",
+  "I'm a Full Stack Developer from Canada. I like building web-based products and software.",
   "I also like studying Japanese, practicing Brazilian Jiu Jitsu, and creating random cool stuff.",
 ];
 
@@ -65,19 +68,19 @@ const experience: ExperienceProps = {
       role: "Full Stack Developer",
       duration: "2023 - Present",
       blurb:
-        "In my role at Motiv, I played a pivotal role in developing websites, web apps and api servers.",
+        "In my role at Motiv, I worked on developing websites, apps and API services.",
       projects: [
         {
           title: "Huddl",
           link: "https://www.huddl.app/",
           blurb:
-            "Huddl is an event engagement app for users to network, share photos, join Q&A sessions, and participate in interactive activities to enhance their event experience.",
+            "Huddl is an app for event attendees to network and participate in gamified activities to enhance their experience.",
         },
         {
           title: "Topshelf Hockey",
           link: "https://apps.apple.com/ca/app/topshelf-hockey/id6550889494",
           blurb:
-            "Topshelf Hockey is a mobile app for hockey enthusiasts, delivering real-time updates and detailed league standings.",
+            "Topshelf Hockey is a mobile app for hockey enthusiasts, delivering real-time league updates.",
         },
       ],
     },
@@ -86,7 +89,7 @@ const experience: ExperienceProps = {
       role: "Ecommerce Developer",
       duration: "2018 - 2022",
       blurb:
-        "At Eylence, I worked as an in-house developer building custom ecommerce websites for eye-wear companies.",
+        "At Eylence, I worked in building custom ecommerce websites for eye-wear companies.",
       projects: [
         {
           title: "Vue Optix",
@@ -102,8 +105,8 @@ const experience: ExperienceProps = {
 };
 
 const projects: ProjectsProps = {
-  title: "Personal Projects",
-  blurb: "A collection of some random dev hobbies.",
+  title: "Hobby Projects",
+  blurb: "A collection of random dev hobbies.",
   projects: [
     {
       title: "Scriddish",
@@ -122,13 +125,11 @@ const projects: ProjectsProps = {
           variant: "link",
           trailing: true,
           padded: false,
-          color: "white",
         },
         {
           to: "https://github.com/jemHerrera/scriddish",
           icon: "pixelarticons:github",
           variant: "ghost",
-          color: "white",
         },
       ],
     },
@@ -149,13 +150,11 @@ const projects: ProjectsProps = {
           variant: "link",
           trailing: true,
           padded: false,
-          color: "white",
         },
         {
           to: "https://github.com/jemHerrera/blackjack-game",
           icon: "pixelarticons:github",
           variant: "ghost",
-          color: "white",
         },
       ],
     },
@@ -164,24 +163,32 @@ const projects: ProjectsProps = {
 </script>
 
 <template>
-  <Progress class="fixed top-0 left-0 w-full z-20 h-2 md:h-1" />
-  <div
-    class="side-navigation hidden fixed top-0 left-0 h-screen md:w-1/6 lg:w-1/4 md:flex flex-col justify-center items-end"
-  >
-    <SimpleNav v-bind="nav" />
+  <div class="bg-grey-50">
+    <Progress class="fixed top-0 left-0 w-full z-20 h-2 md:h-1" />
+    <div
+      class="side-navigation hidden pr-20 fixed top-0 left-0 h-screen md:w-1/6 lg:w-1/4 md:flex flex-col justify-center items-end"
+    >
+      <SimpleNav v-bind="nav" />
+    </div>
+    <Header
+      class="md:hidden fixed top-2 left-0 w-full z-40"
+      :img="profilePicture"
+      :nav="nav"
+      :links="social"
+    />
+    <main class="px-6 pt-20 pb-40 md:mx-[calc(100vw/6)] lg:mx-[calc(100vw/4)]">
+      <Hero id="intro" :img="profilePicture" :links="social">
+        <h1 class="font-bold text-7xl mb-6">
+          Hi! I'm
+          <span class="text-turqoise-400">Jem</span>
+          <span class="text-ribbon-600">.</span>
+        </h1>
+        <p class="leading-6 text-white mb-6">{{ intro[0] }}</p>
+        <p class="leading-6 text-grey-300">{{ intro[1] }}</p>
+      </Hero>
+      <Tech id="tech" v-bind="tech" class="mb-20" />
+      <Experience id="xp" v-bind="experience" class="mb-20" />
+      <Projects id="hobby" v-bind="projects" />
+    </main>
   </div>
-  <Header class="md:hidden" :img="profilePicture" :nav="nav" :links="social" />
-  <main class="p-10 md:mx-[calc(100vw/6)] lg:mx-[calc(100vw/4)]">
-    <Hero :img="profilePicture" :links="social">
-      <h1>
-        Hi! I'm
-        <span class="color-teal">Jem</span>.
-      </h1>
-      <p>{{ intro[0] }}</p>
-      <p>{{ intro[1] }}</p>
-    </Hero>
-    <Tech v-bind="tech" />
-    <Experience v-bind="experience" />
-    <Projects v-bind="projects" />
-  </main>
 </template>
