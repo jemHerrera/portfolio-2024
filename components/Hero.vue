@@ -10,7 +10,7 @@ export type HeroProps = {
 defineProps<HeroProps>();
 </script>
 <template>
-  <div class="h-screen flex flex-col justify-end pb-[calc(100vh/4)]">
+  <div class="h-screen flex flex-col justify-end md:pb-[calc(100vh/4)]">
     <img class="h-32 w-32 rounded-full mb-8" v-bind="img" />
     <slot />
     <div class="flex gap-2 mt-6">

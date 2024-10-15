@@ -131,7 +131,7 @@ const projects: ProjectsProps = {
       description:
         "A game of Blackjack in the browser. Powered by VueJs and DeckofCards API.",
       image: {
-        src: "chip-vue.jpg",
+        src: "chip-vue.png",
         alt: "Vue chip logo",
       },
       tags: [".vue", ".scss"],
@@ -181,14 +181,14 @@ sectionRefs.forEach((sectionRef, index) => {
 
 <template>
   <div class="bg-grey-50">
-    <Progress class="fixed top-0 left-0 w-full z-20 h-2 md:h-1" />
+    <Progress class="fixed top-0 left-0 w-full z-20 h-1" />
     <div
       class="side-navigation hidden pr-20 fixed top-0 left-0 h-screen md:w-1/6 lg:w-1/4 md:flex flex-col justify-center items-end"
     >
       <SimpleNav v-bind="nav" />
     </div>
     <Header
-      class="md:hidden fixed top-2 left-0 w-full z-40"
+      class="md:hidden fixed top-1 left-0 w-full z-40"
       :img="profilePicture"
       :nav="nav"
       :links="social"
@@ -200,7 +200,7 @@ sectionRefs.forEach((sectionRef, index) => {
         :img="profilePicture"
         :links="social"
       >
-        <h1 class="font-bold text-7xl mb-6">
+        <h1 class="font-bold text-6xl md:text-7xl mb-6">
           Hi! I'm
           <span class="text-turqoise-400">Jem</span>
           <span class="text-ribbon-600">.</span>

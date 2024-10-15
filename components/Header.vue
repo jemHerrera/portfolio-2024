@@ -14,12 +14,12 @@ defineProps<HeaderProps>();
 
 <template>
   <div
-    class="flex justify-between bg-grey-100 border-b border-grey-200 px-4 py-6"
+    class="flex justify-between bg-grey-100 border-b border-grey-200 px-4 py-3"
   >
     <div class="flex gap-4">
       <img
-        width="50"
-        height="50"
+        width="32"
+        height="32"
         v-if="img?.src"
         v-bind="img"
         class="rounded-full"
@@ -27,13 +27,14 @@ defineProps<HeaderProps>();
       <SimpleNav v-if="nav" v-bind="nav" />
     </div>
 
-    <div class="flex gap-2">
+    <div class="flex gap-4">
       <UButton
         v-for="link in links"
         v-bind="link"
-        size="xl"
+        size="lg"
         color="grey"
         variant="ghost"
+        :padded="false"
       />
     </div>
   </div>
