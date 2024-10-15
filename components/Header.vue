@@ -17,24 +17,17 @@ defineProps<HeaderProps>();
     class="flex justify-between bg-grey-100 border-b border-grey-200 px-4 py-3"
   >
     <div class="flex gap-4">
-      <img
-        width="32"
-        height="32"
-        v-if="img?.src"
-        v-bind="img"
-        class="rounded-full"
-      />
+      <img v-if="img?.src" v-bind="img" class="rounded-full w-10 h-10" />
       <SimpleNav v-if="nav" v-bind="nav" />
     </div>
 
-    <div class="flex gap-4">
+    <div class="flex">
       <UButton
         v-for="link in links"
         v-bind="link"
-        size="lg"
+        size="xl"
         color="grey"
         variant="ghost"
-        :padded="false"
       />
     </div>
   </div>
