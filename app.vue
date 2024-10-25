@@ -102,6 +102,24 @@ const projects: ProjectsProps = {
   blurb: "A collection of random dev hobbies.",
   projects: [
     {
+      title: "Bengo",
+      description:
+        "Bengo utilizes LLMs to create a conversational AI specifically designed for language learning. The repository is a monorepo consisting of dockerized Express and Nuxt applications.",
+      image: {
+        src: "bengo.png",
+        alt: "Bengo Logo",
+      },
+      tags: ["Express", "Postgres", "Nuxt", "Langchain"],
+      links: [
+        {
+          to: "https://github.com/jemHerrera/bengo",
+          icon: "pixelarticons:github",
+          variant: "ghost",
+          size: "xl",
+        },
+      ],
+    },
+    {
       title: "Scriddish",
       description:
         "Scriddish is a mobile web application for meal planning. The app allows user to select from a variety of recipes and save them.",
@@ -109,7 +127,7 @@ const projects: ProjectsProps = {
         src: "scriddish.jpg",
         alt: "Scriddish Logo",
       },
-      tags: [".vue", ".scss"],
+      tags: ["Vue"],
       links: [
         {
           label: "View project",
@@ -135,7 +153,7 @@ const projects: ProjectsProps = {
         src: "chip-vue.png",
         alt: "Vue chip logo",
       },
-      tags: [".vue", ".scss"],
+      tags: ["Vue"],
       links: [
         {
           label: "View project",
