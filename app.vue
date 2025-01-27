@@ -220,7 +220,7 @@ sectionRefs.forEach((sectionRef, index) => {
         :img="profilePicture"
         :links="social"
       >
-        <h1 class="font-bold text-6xl md:text-7xl mb-6">
+        <h1 class="text-white font-bold text-6xl md:text-7xl mb-6">
           Hi! I'm
           <span class="text-turqoise-400">Jem</span>
           <span class="text-ribbon-600">.</span>
